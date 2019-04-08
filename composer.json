@@ -23,6 +23,6 @@
             "ErrorLogger\\": "/"
         }
     },
-    "minimum-stability": "1.0.0",
+    "minimum-stability": "alpha",
     "prefer-stable": true
 }
