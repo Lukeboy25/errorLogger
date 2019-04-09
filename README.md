@@ -26,11 +26,11 @@ And adjust config file (config/errorlogger.php) with your desired settings.
 Add to your Exception Handler's (/app/Exceptions/Handler.php by default) report method these line and add the use line:
 
     public function report(Exception $e)
-    {
-      if ($this->shouldReport($exception) && class_exists(\ErrorLogger\ErrorLogger::class)) {
-        app('errorlogger')->handle($exception);
-      }
+      {
+        if ($this->shouldReport($exception) && class_exists(\ErrorLogger\ErrorLogger::class)) {
+            app('errorlogger')->handle($exception);
+        }
 
-      return parent::report($e);
-    }
+        return parent::report($e);
+      }
     
