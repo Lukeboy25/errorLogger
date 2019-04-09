@@ -31,27 +31,27 @@ class ErrorLogger
         try {
             $data = $this->getExceptionData($exception);
 
-//            /**
-//             * Check if we should skip this exception
-//             */
-//            if ($this->isSkipException($data['class'])) {
-//                return;
-//            }
-//
-//            /*
-//             * Check environments
-//             */
-//            if (!$this->checkEnvironments()) {
-//                return;
-//            }
-//
-//            /*
-//             * Check if sleep time has been set and
-//             * exception is not a duplicate entry
-//             */
-//            if ($this->config['sleep'] !== 0 && $this->hasSleepingException($data)) {
-//                return;
-//            }
+           /**
+            * Check if we should skip this exception
+            */
+           if ($this->isSkipException($data['class'])) {
+               return;
+           }
+
+           /*
+            * Check environments
+            */
+           if (!$this->checkEnvironments()) {
+               return;
+           }
+
+           /*
+            * Check if sleep time has been set and
+            * exception is not a duplicate entry
+            */
+           if ($this->config['sleep'] !== 0 && $this->hasSleepingException($data)) {
+               return;
+           }
 
             /*
              * Send to error
