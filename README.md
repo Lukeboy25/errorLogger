@@ -33,4 +33,3 @@ Add to your Exception Handler's (/app/Exceptions/Handler.php by default) report 
 
         return parent::report($e);
     }
-    
