@@ -41,9 +41,9 @@ class ErrorLogger
            /*
             * Check environments
             */
-           if (!$this->checkEnvironments()) {
-               return;
-           }
+//            if (!$this->checkEnvironments()) {
+//                return;
+//            }
 
            /*
             * Check if sleep time has been set and
