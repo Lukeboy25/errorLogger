@@ -2,7 +2,6 @@
 
 namespace ErrorLogger\Helpers;
 
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use GuzzleHttp\Client;
 
 class Logger
@@ -40,7 +39,7 @@ class Logger
 
     private function sendError()
     {
-        $local_url = 'http://127.0.0.2:8000/api/logs';
+        $local_url = 'https://staging.error-dashboard.cdemo.nl/api/logs';
 
         $data = json_encode($this->exception);
 
