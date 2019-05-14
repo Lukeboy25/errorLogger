@@ -22,7 +22,7 @@ class ErrorLogger
     {
         $this->config['except'] = config('errorlogger.except', []);
         $this->config['count'] = config('errorlogger.lines_count', 12);
-        $this->config['environments'] = config('errorlogger.environments', []);
+        $this->config['environments'] = config('errorlogger.environment', []);
         $this->config['sleep'] = config('errorlogger.sleep', 0);
         $this->config['errorView'] = config('errorlogger.errorView', 'errors.500');
     }
