@@ -3,7 +3,7 @@
     "description": "A package that sends all errors.",
     "keywords": [
         "laravel",
-        "log",
+        "logger",
         "error"
     ],
     "require": {
