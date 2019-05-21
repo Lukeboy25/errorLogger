@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class ErrorLogger
 {
@@ -21,7 +22,7 @@ class ErrorLogger
     {
         $this->config['except'] = config('errorlogger.except', []);
         $this->config['count'] = config('errorlogger.lines_count', 12);
-        $this->config['environments'] = config('errorlogger.environments', []);
+        $this->config['environments'] = config('errorlogger.environment', []);
         $this->config['sleep'] = config('errorlogger.sleep', 0);
         $this->config['errorView'] = config('errorlogger.errorView', 'errors.500');
     }
@@ -31,39 +32,39 @@ class ErrorLogger
         try {
             $data = $this->getExceptionData($exception);
 
-           /**
-            * Check if we should skip this exception
-            */
-           if ($this->isSkipException($data['class'])) {
-               return;
-           }
+            /**
+             * Check if we should skip this exception
+             */
+            if ($this->isSkipException($data['class'])) {
+                return;
+            }
 
-           /*
-            * Check environments
-            */
-//            if (!$this->checkEnvironments()) {
-//                return;
-//            }
+            /**
+             * Check environments
+             */
+            if (!$this->checkEnvironments()) {
+                return;
+            }
 
-           /*
-            * Check if sleep time has been set and
-            * exception is not a duplicate entry
-            */
-           if ($this->config['sleep'] !== 0 && $this->hasSleepingException($data)) {
-               return;
-           }
+            /**
+             * Check if sleep time has been set and
+             * exception is not a duplicate entry
+             */
+            if ($this->config['sleep'] !== 0 && $this->hasSleepingException($data)) {
+                return;
+            }
 
-            /*
+            /**
              * Send to error
              */
             $this->logError($data, $additionalData);
 
-            /*
+            /**
              * If sleep has been enabled, add the new exception
              */
-//            if ($this->config['sleep'] !== 0) {
-//                $this->addExceptionToSleep($data);
-//            }
+            if ($this->config['sleep'] !== 0) {
+                $this->addExceptionToSleep($data);
+            }
 
             return;
         } catch (Exception $e) {
@@ -73,7 +74,7 @@ class ErrorLogger
 
     public function errorView()
     {
-        if(\Illuminate\Support\Facades\View::exists($this->config['errorView'])){
+        if(View::exists($this->config['errorView'])){
             return view($this->config['errorView']);
         }
 
@@ -99,7 +100,7 @@ class ErrorLogger
     {
         $data = [];
 
-        $data['enviroment'] = env('APP_ENV');
+        $data['environment'] = env('APP_ENV');
         $data['host'] = Request::server('SERVER_NAME');
         $data['method'] = Request::method();
         $data['fullUrl'] = Request::fullUrl();
@@ -108,6 +109,7 @@ class ErrorLogger
         $data['line'] = $exception->getLine();
         $data['file'] = $exception->getFile();
         $data['class'] = get_class($exception);
+        $data['dbName'] = env('DB_DATABASE');
         $data['storage'] = [
             'SERVER' => Request::server(),
             'GET' => Request::query(),

@@ -15,9 +15,9 @@ return [
     /*
      * Environments where ErrorLogger should report
      */
-    'environments' => [
-        'production',
-        'local'
+    'environment' => [
+        'local',
+        'api'
     ],
 
     /*

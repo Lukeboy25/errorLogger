@@ -2,6 +2,7 @@
 
 namespace ErrorLogger;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class ErrorLoggerServiceProvider extends ServiceProvider
@@ -38,8 +39,8 @@ class ErrorLoggerServiceProvider extends ServiceProvider
 
         $this->app['view']->addNamespace('errorlogger', __DIR__ . '/../resources/views');
 
-        if (class_exists(\Illuminate\Foundation\AliasLoader::class)) {
-            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        if (class_exists(AliasLoader::class)) {
+            $loader = AliasLoader::getInstance();
             $loader->alias('ErrorLogger', 'ErrorLogger\Facade');
         }
 

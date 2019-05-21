@@ -2,7 +2,7 @@
 
 You can install the package through Composer.
   
-    composer require lukeboy25/errorlogger 1.1.1.x-dev
+    composer require lukeboy25/errorlogger 1.1.3.x-dev
 
 *In case of Laravel 5.5, you still need to manually register this as the service provider has to be the first provider that needs to be registered.*
 
