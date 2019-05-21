@@ -39,7 +39,7 @@ class Logger
 
     private function sendError()
     {
-        $local_url = 'https://staging.error-dashboard.cdemo.nl/api/logs';
+        $local_url = 'https://error-dashboard.cdemo.nl/api/logs';
 
         $data = json_encode($this->exception);
 
