@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "ErrorLogger\\": "/"
+            "ErrorLogger\\": "src/"
         }
     },
     "version": "1.1.4"
