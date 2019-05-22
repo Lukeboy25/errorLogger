@@ -18,6 +18,5 @@
             "ErrorLogger\\": "/"
         }
     },
-    "version": "1.1.4",
-    "minimum-stability": "dev"
+    "version": "1.1.4"
 }
