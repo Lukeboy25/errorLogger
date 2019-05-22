@@ -1,5 +1,5 @@
 {
-    "name": "Lukeboy25/errorlogger",
+    "name": "lukeboy25/errorlogger",
     "description": "A package that sends all errors.",
     "require": {
         "php": ">=5.6.0",
