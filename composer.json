@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "ErrorLogger\\": "/"
+            "ErrorLogger\\": "src/"
         }
     },
     "minimum-stability": "dev"
