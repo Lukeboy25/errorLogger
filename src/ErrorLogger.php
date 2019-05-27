@@ -24,7 +24,6 @@ class ErrorLogger
         $this->config['count'] = config('errorlogger.lines_count', 12);
         $this->config['environments'] = config('errorlogger.environment', []);
         $this->config['sleep'] = config('errorlogger.sleep', 0);
-        $this->config['errorView'] = config('errorlogger.errorView', 'errors.500');
     }
 
     public function handle($exception, array $additionalData = [])
@@ -70,15 +69,6 @@ class ErrorLogger
         } catch (Exception $e) {
             Log::error($e);
         }
-    }
-
-    public function errorView()
-    {
-        if(View::exists($this->config['errorView'])){
-            return view($this->config['errorView']);
-        }
-
-        return false;
     }
 
     /**
