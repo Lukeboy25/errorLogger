@@ -4,7 +4,8 @@
     "require": {
         "php": ">=5.6.0",
         "guzzlehttp/guzzle": "~6.0",
-        "predis/predis": "~1.0"
+        "predis/predis": "~1.0",
+        "ext-json": "*"
     },
     "license": "MIT",
     "authors": [
@@ -15,9 +16,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "ErrorLogger\\": "/"
+            "ErrorLogger\\": "src/"
         }
     },
-    "version": "1.0.0",
     "minimum-stability": "dev"
 }

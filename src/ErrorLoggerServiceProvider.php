@@ -36,16 +36,5 @@ class ErrorLoggerServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/errorlogger.php' => config_path('errorlogger.php'),
             ]);
         }
-
-        $this->app['view']->addNamespace('errorlogger', __DIR__ . '/../resources/views');
-
-        if (class_exists(AliasLoader::class)) {
-            $loader = AliasLoader::getInstance();
-            $loader->alias('ErrorLogger', 'ErrorLogger\Facade');
-        }
-
-        $this->publishes([
-            __DIR__ . '/../resources/migrations' => $this->app->databasePath() . '/migrations',
-        ], 'migrations');
     }
 }
