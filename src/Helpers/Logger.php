@@ -6,16 +6,12 @@ use GuzzleHttp\Client;
 
 class Logger
 {
-    protected $client;
+    private $client;
     public $additionalData = [];
     public $exception;
 
     public function __construct(array $exception = [])
     {
-        $this->client = new Client([
-            'headers' => ['Content-Type' => 'application/json'],
-        ]);
-
         $this->exception = $exception;
     }
 
@@ -31,16 +27,24 @@ class Logger
 
     private function sendError()
     {
-        $local_url = 'https://error-dashboard.cdemo.nl/api/logs';
-
         $data = json_encode($this->exception);
 
-        $response = $this->client->post($local_url, [
-            'body' => $data
+        $this->client = new Client([
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => config('errorlogger.token')],
         ]);
 
-        $response = json_decode($response->getBody(), true);
+        if(config('errorlogger.token') !== "") {
+            $response = $this->client->post(config('errorlogger.dashboard_url'), [
+                'body' => $data
+            ]);
 
-        return $response;
+            $response = json_decode($response->getBody(), true);
+
+            return $response;
+        }
+
+        return null;
     }
 }
