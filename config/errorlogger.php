@@ -15,6 +15,16 @@ return [
     'sleep' => 5,
 
     /*
+     * Set the url where to push the logs to
+     */
+    'dashboard_url' => '',
+
+    /*
+     * Set the token that allows you to send logs
+     */
+    'token' => env('ERROR_LOGGER_TOKEN'),
+
+    /*
      * List of exceptions to skip sending.
      */
     'except' => [
