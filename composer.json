@@ -19,6 +19,5 @@
             "ErrorLogger\\": "src/"
         }
     },
-    "minimum-stability": "dev",
-    "version": "^1.2.1"
+    "minimum-stability": "dev"
 }
