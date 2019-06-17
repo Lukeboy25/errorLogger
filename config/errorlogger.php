@@ -17,7 +17,7 @@ return [
     /*
      * Set the url where to push the logs to
      */
-    'dashboard_url' => '',
+    'dashboard_url' => 'https://error-dashboard.cdemo.nl/api/exceptions',
 
     /*
      * Set the token that allows you to send logs
